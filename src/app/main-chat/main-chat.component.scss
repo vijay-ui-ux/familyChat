@@ -1,0 +1,16 @@
+.main-chat {
+    .container-fluid {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main-chat {
+        .container-fluid {
+            display: block !important;
+            .hide {
+                display: none !important;
+            }
+        }
+    }
+}

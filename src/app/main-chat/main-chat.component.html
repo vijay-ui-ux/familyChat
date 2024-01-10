@@ -1,0 +1,11 @@
+<div class="main-chat">
+<div class="container-fluid">
+    <div [ngClass]="isChange ? 'hide' : ''" class="left-panel col-md-3">
+        <app-friends [changed]="!isChange" ></app-friends>
+    </div>
+    <div [ngClass]="!isChange ? 'hide' : ''" class="right-panel col-md-9">
+        <app-chat (isBack) = "isBack($event)"></app-chat>
+    </div>
+</div>
+</div>
+

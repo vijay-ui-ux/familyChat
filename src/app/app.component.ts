@@ -22,51 +22,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.apiService.getMessageUpdates().subscribe(
-      (message: any) => {
-        console.log(message, 'message')
-        if(message.length) {
-          this.messages = message
-        }
-        else {
-          this.messages.push(message);
-        }
-      },
-      (error: any) => {
-        console.error('WebSocket error:', error);
-      }
-    );
   }
 
-  sendMessage() {
-    const message: Message = {
-      text: this.inputMessage,
-      timestamp: new Date().toISOString(),
-      sender: 'user1',
-      receiver: 'user2'
-    };
-    this.messages.push(message)
-    // this.socket$.next(message);
-    this.apiService.sendMessage(message);
-    this.inputMessage = '';
-  }
 
-  emailVerification() {
-    this.apiService.emailVerification({email: this.emailId}).subscribe(res => {
-      console.log(res, "55::::")
-    })
-  }
-
-  sendOtp() {
-    let body = {
-      email: this.emailId,
-      enteredOTP: this.otp
-    }
-    this.apiService.sendOtp(body).subscribe(res => {
-      // this.otpResponse = res;
-      console.log(res, "otppppp");
-    })
-  }
+  
 
   /* ngOnDestroy() {
     if (this.socket$) {

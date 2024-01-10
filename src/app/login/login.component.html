@@ -1,0 +1,29 @@
+<div class="mb-3" *ngIf="!validEmail">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email"  [(ngModel)]="emailId"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+</div>
+<button *ngIf="!validEmail" type="submit" [disabled]="emailId === ''" (click)="emailVerification()" class="btn btn-primary">Enter Email Address</button>
+
+<div *ngIf="validEmail && !isOtp">
+    <div class="mb-3">
+        <label for="exampleInputOtp" class="form-label">OTP</label>
+        <input type="email"  [(ngModel)]="otp"  class="form-control" id="exampleInputOtp" aria-describedby="otpHelp">
+    </div>
+    <button type="submit" (click)="sendOtp()" class="btn btn-primary">Enter OTP</button>
+</div>
+
+<div *ngIf="isOtp">
+    <div class="mb-3">
+        <label for="exampleInputUserName" class="form-label">User Name</label>
+        <input type="email"  [(ngModel)]="userName"  class="form-control" id="exampleInputUserName" aria-describedby="userHelp">
+    </div>
+    <button type="submit" (click)="sendUser()" class="btn btn-primary">Chat Now!</button>
+</div>
+<!-- <div class="email-verification">
+    <input type="emial">
+    <button class="btn btn-primary" (click)="emailVerification()">Enter Email</button>
+    </div> -->
+    <!-- <div class="otp-verification">
+      <input type="text" [(ngModel)]="otp" >
+      <button (click)="sendOtp()">Enter OTP</button>
+      </div> -->

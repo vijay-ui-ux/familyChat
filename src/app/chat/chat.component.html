@@ -1,0 +1,59 @@
+<!-- <div *ngIf="activeFriend && activeFriend.email">
+  <div>
+    {{activeFriend?.userName}}
+  </div>
+  <div> 
+      <ul *ngIf="messages.length"> 
+        <li *ngFor="let message of messages">{{ message.text }} - {{ message.timestamp }} - index - {{message?.index }}</li>
+      </ul>
+      <input type="text" [(ngModel)]="inputMessage" />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+</div> -->
+
+
+
+<div *ngIf="activeFriend && activeFriend.email" class="container py-5 px-4">
+  <div class="row rounded-lg overflow-hidden shadow">
+    <div class="head d-flex">
+      <i  (click)="backToList()" class="fa fa-arrow-left" aria-hidden="true"></i>
+      <img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle friend-chat-name">
+      <h3>{{activeFriend?.userName}}</h3>
+    </div>
+    <!-- Chat Box-->
+    <div class="col-12 px-0">
+      <div class="px-4 py-5 chat-box bg-white">
+        <!-- Sender Message-->
+        <div [ngClass]="activeFriend?.email === message?.senderemail ? 'sender': ''" *ngFor="let message of messages" class="media w-100 d-flex mb-3">
+          <img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
+          <div class="media-body ml-3">
+            <div class="bg-light rounded py-2 px-3 mb-2">
+              <p class="text-small mb-0 text-muted">
+                {{message?.text}}
+              </p>
+              <span class="small text-muted">12:00 PM | Aug 13</span>
+            </div>
+            
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- Typing area -->
+      <form class="bg-light">
+        <div class="input-group">
+          <input type="text" [ngModelOptions]="{standalone: true}" placeholder="Type a message" [(ngModel)]="inputMessage" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
+          <div class="input-group-append">
+            <button id="button-addon2" (click)="sendMessage()" type="submit" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!activeFriend || !activeFriend?.email" class="container py-5 px-4">
+    <p>Choose a friend to chat! </p>
+</div>
